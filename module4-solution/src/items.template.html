@@ -1,0 +1,11 @@
+<nav>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
+		<li class="breadcrumb-item"><a ui-sref="categories">Menu Categories</a></li>
+		<li class="breadcrumb-item active">{{ctrl.items.category.name}}</li>
+	</ol>
+</nav>
+
+<h3>Menu Items</h3>
+
+<items items="ctrl.items"></items>
