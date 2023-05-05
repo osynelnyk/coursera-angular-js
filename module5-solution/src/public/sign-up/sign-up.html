@@ -1,0 +1,80 @@
+<div class="container">
+	<form class="form-horizontal" name="frm" novalidate>
+
+		<div class="form-group">
+			<label for="firstName" class="col-sm-2 col-sm-offset-2 col-form-label">First Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control"
+					   name="firstName" id="firstName" required
+					   ng-model="signUpCtrl.user.firstName">
+				<span class="invalid-message"
+					  ng-if="frm.firstName.$error.required &&
+					  frm.firstName.$touched">Please enter first name</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="lastName" class="col-sm-2 col-sm-offset-2 col-form-label">Last Name</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control"
+					   name="lastName" id="lastName" required
+					   ng-model="signUpCtrl.user.lastName">
+				<span class="invalid-message"
+					  ng-if="frm.lastName.$error.required &&
+					  frm.lastName.$touched">Please enter last name</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email" class="col-sm-2 col-sm-offset-2 col-form-label">Email</label>
+			<div class="col-sm-4">
+				<input type="email" class="form-control"
+					   name="email" id="email" required
+					   ng-model="signUpCtrl.user.email">
+				<span class="invalid-message"
+					  ng-if="frm.email.$error.required &&
+					  frm.email.$touched">Must be a valid email address: handle@domain format</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="phone" class="col-sm-2 col-sm-offset-2 col-form-label">Phone</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control"
+					   name="phone" id="phone" placeholder="###-###-####"
+					   pattern="(\d{3})(-{0,1})(\d{3})(-{0,1})(\d{4})"
+					   ng-model="signUpCtrl.user.phone">
+				<span class="invalid-message"
+					  ng-if="frm.phone.$invalid &&
+					  frm.phone.$touched">Phone must be in the format: ###-###-####</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="favorite" class="col-sm-2 col-sm-offset-2 col-form-label">Favorite Dish</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control"
+					   name="favorite" id="favorite"
+					   pattern="([A-Z]+)([0-9]+)" favorite required
+					   ng-model="signUpCtrl.user.favorite"
+					   ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+				<span class="invalid-message"
+					  ng-if="frm.favorite.$error.required &&
+					  frm.favorite.$touched">Please enter your favorite dish</span>
+				<span class="invalid-message"
+					  ng-if="frm.favorite.$invalid &&
+					  frm.favorite.$touched">No such menu number exists</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-2">
+				<button type="submit" class="btn btn-primary"
+						ng-disabled="frm.$invalid"
+						ng-click="signUpCtrl.submit()">
+					Sign up
+				</button>
+				<span ng-if="signUpCtrl.saved" class="success-message">Your information has been saved</span>
+			</div>
+		</div>
+		
+		
+	</form>
+	
+</div>
